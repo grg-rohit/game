@@ -1,0 +1,1 @@
+obstacles = generate_map(SCREEN_WIDTH, SCREEN_HEIGHT)
