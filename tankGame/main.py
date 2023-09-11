@@ -5,7 +5,7 @@ from tank import run_game
 from maps import load_background, generate_map
 from targets import generate_targets
 
-# Initialize Pygame
+
 pygame.init()
 
 # Constants
