@@ -5,7 +5,7 @@ from tank import run_game
 from maps import load_background, generate_map
 from targets import generate_targets
 
-# Initialize Pygame
+
 pygame.init()
 
 # Constants
@@ -16,7 +16,7 @@ tank_height = 40
 
 # Create the screen
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Character Control with Shooting - Level 1")  # Initialize with Level 1
+pygame.display.set_caption("Tank Game - Level 1")  # Initialize with Level 1
 
 # Load the background image
 background_image = load_background("assets/maps/warzone1.jpg", (1000, 700))
@@ -51,7 +51,7 @@ while current_level <= 2:
     print(f"Level {current_level}: Number of obstacles = {len(obstacles)}")
 
     # Update the window caption to display the current level
-    pygame.display.set_caption(f"Character Control with Shooting - Level {current_level}")
+    pygame.display.set_caption(f"TANK SHOOT - Level {current_level}")
 
     # Clear the screen
     screen.fill((0, 0, 0))

@@ -49,7 +49,10 @@ def generate_targets(num_targets, screen_width, screen_height, existing_obstacle
             target_rect = pygame.Rect(x, y, target_width, target_height)
 
             # Check if the new target collides with existing obstacles (if provided)
-            if existing_obstacles is None or not is_colliding(target_rect, existing_obstacles):
+            if (
+                existing_obstacles is None
+                or (not is_colliding(target_rect, existing_obstacles) and not target_rect.colliderect(tank_rect))
+            ):
                 break  # No collision, add this target
 
         targets.append({
@@ -59,7 +62,34 @@ def generate_targets(num_targets, screen_width, screen_height, existing_obstacle
 
     return targets
 
+# def generate_targets(num_targets, screen_width, screen_height, existing_obstacles=None):
+#     targets = []
 
+#     target_images = load_target_images()
+
+#     for _ in range(num_targets):
+#         # Select a random target image
+#         target_image = random.choice(target_images)
+#         target_width, target_height = target_image.get_size()
+
+#         while True:
+#             # Generate random target properties (x, y, width, height)
+#             x = random.randint(0, screen_width - target_width)
+#             y = random.randint(0, screen_height - target_height)
+#             target_rect = pygame.Rect(x, y, target_width, target_height)
+
+#             # Check if the new target collides with existing obstacles (if provided)
+#             if existing_obstacles is None or not is_colliding(target_rect, existing_obstacles):
+#                 # Check if the new target collides with other targets
+#                 if not check_target_collision(target_rect, targets):
+#                     break  # No collision, add this target
+
+#         targets.append({
+#             'image': target_image,
+#             'rect': target_rect
+#         })
+
+#     return targets
 
 def check_target_collision(rect, targets):
     for target in targets:
@@ -67,4 +97,42 @@ def check_target_collision(rect, targets):
             targets.remove(target)
             return True
     return False
+
+
+
+# def generate_targets(num_targets, screen_width, screen_height, existing_obstacles=None):
+#     targets = []
+
+#     target_images = load_target_images()
+
+#     for _ in range(num_targets):
+#         # Select a random target image
+#         target_image = random.choice(target_images)
+#         target_width, target_height = target_image.get_size()
+
+#         while True:
+#             # Generate random target properties (x, y, width, height)
+#             x = random.randint(0, screen_width - target_width)
+#             y = random.randint(0, screen_height - target_height)
+#             target_rect = pygame.Rect(x, y, target_width, target_height)
+
+#             # Check if the new target collides with existing obstacles (if provided)
+#             if existing_obstacles is None or not is_colliding(target_rect, existing_obstacles):
+#                 break  # No collision, add this target
+
+#         targets.append({
+#             'image': target_image,
+#             'rect': target_rect
+#         })
+
+#     return targets
+
+
+
+# def check_target_collision(rect, targets):
+#     for target in targets:
+#         if rect.colliderect(target['rect']):
+#             targets.remove(target)
+#             return True
+#     return False
 
